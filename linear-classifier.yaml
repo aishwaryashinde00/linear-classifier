@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: linear-classifier-service
-        image: prachigondhali/linear-classifier:latest
+        image: aishwaryashinde/linear-classifier:latest
         command:
         - /bin/bash
         - -c
