@@ -1,16 +1,6 @@
-FROM ubuntu
+FROM tedakshay/dockerfile
 
-RUN \
- apt-get update && \
- apt-get install python3.5 -y && \
- apt-get install -y python-pip python-dev build-essential && \
- pip install --upgrade pip && \
- pip install tensorflow && \
- pip install Flask && \
- apt-get install git -y && \
- pip install numpy && \
- pip install pandas && \
- git clone git clone https://github.com/aishwaryashinde/linear-classifier.git
+RUN git clone git clone https://github.com/aishwaryashinde/linear-classifier.git
 
 RUN cd /linear-classifier
 
