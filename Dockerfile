@@ -10,7 +10,7 @@ RUN \
  apt-get install git -y && \
  pip install numpy && \
  pip install pandas && \
- git clone git clone https://github.com/prachigondhali/linear-classifier.git
+ git clone git clone https://github.com/aishwaryashinde/linear-classifier.git
 
 RUN cd /linear-classifier
 
