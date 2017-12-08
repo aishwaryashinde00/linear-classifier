@@ -1,6 +1,6 @@
 FROM tedakshay/dockerfile
 
-RUN git clone git clone https://github.com/aishwaryashinde/linear-classifier.git
+RUN git clone https://github.com/aishwaryashinde/linear-classifier.git
 
 RUN cd /linear-classifier
 
