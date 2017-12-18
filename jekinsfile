@@ -1,0 +1,32 @@
+pipeline{
+agent any 
+    stages {
+    stage('Cloning')
+    {
+    steps
+    {
+    sh'rm -rf linear-classifier'
+    sh'git clone https://github.com/aishwaryashinde00/linear-classifier.git'
+  }
+     }
+            stage('Build')
+    {
+        steps {
+    sh'WEB_IMAGE_NAME="aishwaryashinde/linear-classification:${BUILD_NUMBER}"'
+ sh'docker build -t aishwaryashinde/linear-classification:${BUILD_NUMBER} .'
+sh 'docker login -u aishwaryashinde -p ${DOCKER_HUB}'
+sh 'docker push aishwaryashindelinear-classification:${BUILD_NUMBER} '     
+}  
+   
+   }
+   
+    stage('Deployment')
+    {
+        steps {
+           sh 'WEB_IMAGE_NAME="aishwaryashinde/linear-classification:${BUILD_NUMBER}"'
+           sh ' create -f ${WORKSPACE}/linear-class.yml || true'
+sh 'kubectl set image deployment/linear-classifier linear-classifier=aishwaryashinde/linear-classification:${BUILD_NUMBER} --kubeconfig /var/lib/jenkins/.kube/config'
+             }
+    }
+}
+}
