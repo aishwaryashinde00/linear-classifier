@@ -24,6 +24,8 @@ sh 'docker push aishwaryashinde/linear-classification:kube${BUILD_NUMBER} '
     {
         steps {
            sh 'WEB_IMAGE_NAME="aishwaryashinde/linear-classification:kube${BUILD_NUMBER}"'
+           sh'kubectl delete -f ${WORKSPACE}/linear-classifier.yaml || true '
+           sh'sleep30'
            sh ' kubectl create -f ${WORKSPACE}/linear-classifier.yaml || true'
 sh 'kubectl set image deployment/linear-classifier  linear-classifier=aishwaryashinde/linear-classification:kube${BUILD_NUMBER} --kubeconfig /var/lib/jenkins/.kube/config'
              }
